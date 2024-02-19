@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container bg-light my-1 p-2">
+    <div class="spinner container">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-auto">
+                <div class="row justify-content-center">
+                    <h4 class="col-auto text-primary"> Please wait</h4>
+                </div>
+                <div class="row justify-content-center spinner-container">
+                    <div class="col-auto spinner-border text-primary" role="status">
+                        <span class="sr-only"></span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="p-3  bg-white">
+        <h3 class="text-primary fw-bold my-3">Upload Image or Video </h3>
+        <form class="row g-3 p-3" action="{% url 'try' %}" method="POST" enctype="multipart/form-data" id="upload-form">
+            {% csrf_token %}
+            {{form}}
+            <h5 id="file-input-error"></h5>
+            <div class="col-auto ps-0">
+                <input type="submit" class="btn btn-success mb-3" value="Upload" id="upload-btn">
+            </div>
+        </form>
+    </div>
+
+
+
+    {% if original and output %}
+    <div class="row p-3">
+        <div class="col-auto">
+            <h2 class="text-primary fw-bold my-3">Input</h2>
+            <img src="{{ original }}" class="img-fluid">
+        </div>
+
+        <div class="col-auto">
+            <h2 class="text-primary fw-bold my-3">Output</h2>
+            <img src="{{ output }}" class="img-fluid">
+        </div>
+
+    </div>
+    {% endif %}
+
+    {% if all_list %}
+    <div class="row p-4 bg-light">
+        <h2 class="text-primary">Attributes of each vehicle</h2>
+        {% for label , crop , plate , txt , color , brand , status in all_list %}
+        <div class="col-3 m-2 bg-white align-items-center">
+            <img src="data:image/jpg;base64,{{ crop }}" alt="My Image" class="img-fluid">
+            <div class="p-3">
+                <div class="row">
+                    <h5 class="col-6">Type : </h5>
+                    <p class="col-6">{{ label }}</p>
+                </div>
+
+                <div class="row">
+                    <h5 class="col-6">Color : </h5>
+                    <p class="col-6">{{color}}</p>
+                </div>
+                <div class="row">
+                    <h5 class="col-6">Brand: </h5>
+                    <p class="col-6">{{ brand }}</p>
+                </div>
+                <div class="row">
+                    <h5 class="col-6">Status: </h5>
+                    <p class="col-6">{{ status }}</p>
+                </div>
+                <div class="row">
+                    <h5 class="col-6">Speed: </h5>
+                    <p class="col-6">0 Km/h</p>
+                </div>
+                <div class="row align-items-center">
+                    <h5 class="col-6">Plate Number: </h5>
+                    <p class="col-3">{{ txt }}</p>
+                    {% if plate != None %}
+                    <img class="col-3 img-fluid" src="data:image/jpg;base64,{{ plate }}" alt="plate" height='65px'
+                        width='135px'>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    {% endif %}
+
+    {% if out_video_path %}
+    <!-- Video -->
+    <div class="row">
+        <div class="col-auto">
+            <h2 class="text-primary fw-bold my-3">Output Video</h2>
+            <video width="100%" height="auto" controls autoplay>
+                <source src="{{ out_video_path }}" type="video/webm">
+            </video>
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock content %}

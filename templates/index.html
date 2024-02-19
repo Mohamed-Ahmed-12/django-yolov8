@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row justify-content-center align-items-center">
+        <div class="col p-4" id="main">
+            <h1 class="text-white fw-bold">
+                In This Web App you can identify Vehicle attributes
+            </h1>
+            <div class="my-3 p-3">
+                <p class="fs-4 my-3 text-white fw-bold">Our Vehicle classes that can detect are Car , Van , Bus , Truck
+                    and Motorbike</p>
+                <p class="fs-4 my-3 text-white fw-bold">Attributes that can identify such as Type , Color , Brand ,
+                    Plate Number , speed and Body Status</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid my-3 p-3 bg-white">
+        <h2 class="my-3 text-primary fw-bold">Our Detected Brands</h2>
+        <div class="row p-3 owl-carousel owl-theme" id="brands">
+            <img src="{% static 'brands/audi.png' %}" class="rounded col-1" alt="audi" width="35" height="75">
+            <img src="{% static 'brands/bmw.png' %}" class="rounded col-1" alt="bmw" width="35" height="75">
+            <img src="{% static 'brands/mercedes.jpeg' %}" class="rounded col-1" alt="mercedes" width="35" height="75">
+            <img src="{% static 'brands/gmc.jpg' %}" class="rounded col-1" alt="gmc" width="35" height="75">
+            <img src="{% static 'brands/chevrolet.jpeg' %}" class="rounded col-1" alt="chevrolet" width="35"
+                height="75">
+            <img src="{% static 'brands/honda.jpeg' %}" class="rounded col-1" alt="honda" width="35" height="75">
+            <img src="{% static 'brands/dodge.png' %}" class="rounded col-1" alt="dodge" width="35" height="75">
+            <img src="{% static 'brands/jeep.png' %}" class="rounded col-1" alt="jeep" width="35" height="75">
+            <img src="{% static 'brands/hyundai.png' %}" class="rounded col-1" alt="hyunidai" width="35" height="75">
+            <img src="{% static 'brands/mazda.png' %}" class="rounded col-1" alt="mazda" width="35" height="75">
+            <img src="{% static 'brands/mitsubishi.png' %}" class="rounded col-1" alt="mitsubishi" width="35"
+                height="75">
+            <img src="{% static 'brands/nissan.png' %}" class="rounded col-1" alt="nissan" width="35" height="75">
+            <img src="{% static 'brands/toyota.png' %}" class="rounded col-1" alt="toyota" width="35" height="75">
+            <img src="{% static 'brands/volkes.png' %}" class="rounded col-1" alt="volkes" width="35" height="75">
+            <img src="{% static 'brands/ford.png' %}" class="rounded col-1" alt="ford" width="35" height="75">
+            <img src="{% static 'brands/kia.png' %}" class="rounded col-1" alt="kia" width="35" height="75">
+            <img src="{% static 'brands/volvo.png' %}" class="rounded col-1" alt="volvo" width="35" height="75">
+            <img src="{% static 'brands/suzuki.png' %}" class="rounded col-1" alt="suzuki" width="35" height="75">
+        </div>
+    </div>
+
+
+    <div class="container-fluid my-3 p-3 ">
+        <div class="p-3 my-3 bg-light">
+            <h2 class="my-3 text-primary fw-bold">Demo for Image</h2>
+            <div class="row">
+                <div class="col-auto">
+                    <img src="{% static 'demo1/1.png' %}" alt="demo1">
+                </div>
+                <div class="col-auto">
+                    <img src="{% static 'demo1/2.png' %}" alt="demo1">
+                </div>
+                <div class="col-auto">
+                    <img src="{% static 'demo1/3.png' %}" alt="demo1">
+                </div>
+                <div class="col-auto">
+                    <img src="{% static 'demo1/4.png' %}" alt="demo1">
+                </div>
+                <div class="col-auto">
+                    <img src="{% static 'demo1/5.png' %}" alt="demo1">
+                </div>
+                <div class="col-auto">
+                    <img src="{% static 'demo1/6.png' %}" alt="demo1">
+                </div>
+                <div class="col-auto">
+                    <img src="{% static 'demo1/7.png' %}" alt="demo1">
+                </div>
+                <div class="col-auto">
+                    <img src="{% static 'demo1/8.png' %}" alt="demo1">
+                </div>
+                <div class="col-auto">
+                    <img src="{% static 'demo1/9.png' %}" alt="demo1">
+                </div>
+                <div class="col-auto">
+                    <img src="{% static 'demo1/10.png' %}" alt="demo1">
+                </div>
+            </div>
+        </div>
+        <div class="p-3 my-3 bg-light">
+            <h2 class="my-3 text-primary fw-bold">Demo for Videos</h2>
+            <div class="row">
+                <div class="col-6">
+                    <h2>Output for Speed estimation</h2>
+                    <video width="100%" height="auto" controls>
+                        <source src="{% static 'demo2/speed.webm' %}" type="video/mp4">
+                    </video>
+                </div>
+                <div class="col-6">
+                    <h2>Output for detection</h2>
+                    <video width="100%" height="auto" controls>
+                        <source src="{% static 'demo2/111.webm' %}" type="video/webm">
+                    </video>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!--
+Attribute   Value       Description
+autoplay    autoplay 	Specifies that the video will start playing as soon as it is ready
+controls 	controls 	Specifies that video controls should be displayed (such as a play/pause button etc).
+height      pixels      Sets the height of the video player
+width 	    pixels 	    Sets the width of the video player
+loop        loop        Specifies that the video will start over again, every time it is finished
+muted       muted       Specifies that the audio output of the video should be muted
+poster      URL         Specifies an image to be shown while the video is downloading, or until the user hits the play button
+preload 	auto metadata none 	Specifies if and how the author thinks the video should be loaded when the page loads
+src         URL 	    Specifies the URL of the video file
+
+-->
+
+{% endblock content %}
